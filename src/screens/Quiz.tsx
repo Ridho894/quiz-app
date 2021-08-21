@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
-import { View, Text } from "react-native";
+import { View, Text, TouchableWithoutFeedback } from "react-native";
 import {
   Difficulty,
   getQuizQuestions,
@@ -7,6 +7,8 @@ import {
   QuestionState,
 } from "../utils/utils";
 import { Icon } from "react-native-elements";
+import Button from "../component/Button";
+
 function Quiz() {
   const [loading, setLoading] = useState(false);
   const [questions, setQuestions] = useState<QuestionState[]>([]);
@@ -14,14 +16,22 @@ function Quiz() {
   const [score, setScore] = useState(0);
   const [gameOver, setGameOver] = useState(true);
   const [TOTAL_QUESTIONS] = useState(10);
+  const [number, setNumber] = useState(0);
   const setAnswers = useRef(null);
 
-  const startQuiz = () => {
+  const startQuiz = async () => {
     setLoading(true);
     setGameOver(false);
-
-    const newQuestions = getQuizQuestions(TOTAL_QUESTIONS, Difficulty.EASY);
+    const newQuestions = await getQuizQuestions(
+      TOTAL_QUESTIONS,
+      Difficulty.EASY
+    );
     console.log(newQuestions);
+    setQuestions(newQuestions);
+    setScore(0);
+    setUserAnswers([]);
+    setNumber(0);
+    setLoading(false);
   };
 
   useEffect(() => {
@@ -64,7 +74,27 @@ function Quiz() {
             paddingRight: 10,
           }}
         >
-          <Text style={{ color: "#006996", fontSize: 16 }}>1</Text>
+          <Text style={{ color: "#006996", fontSize: 16, marginRight: 10 }}>
+            1
+          </Text>
+          <Text style={{ color: "#000", fontSize: 16, textAlign: "left" }}>
+            From which country did the song &quot;Gangnam Style&quot; originate
+            from?
+          </Text>
+        </View>
+        <View
+          style={{
+            flexDirection: "column",
+            alignItems: "center",
+            paddingTop: 14,
+            paddingHorizontal: 24.5,
+            marginTop: 30,
+          }}
+        >
+          <Button label="Answer" />
+          <Button label="Answer" />
+          <Button label="Answer" />
+          <Button label="Answer" />
         </View>
       </View>
       <View
@@ -81,7 +111,9 @@ function Quiz() {
           right: 20,
         }}
       >
-        <Icon type="entypo" name="plus" color="white" size={10} />
+        <TouchableWithoutFeedback onPress={() => startQuiz()}>
+          <Icon type="entypo" name="plus" color="white" size={10} />
+        </TouchableWithoutFeedback>
       </View>
     </View>
   );

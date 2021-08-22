@@ -25,15 +25,20 @@ const styles = StyleSheet.create({
 });
 
 interface ButtonProps {
-  label: string;
+  key: number;
+  answer: string;
+  onPress: () => void;
+  correct: boolean
+  disabled: boolean
 }
 
-const Button = ({ label }: ButtonProps) => {
+const Button = ({ answer, onPress, correct, disabled }: ButtonProps) => {
   return (
     <RectButton
-      style={[styles.container, elevate(5), { backgroundColor: "#ccc" }]}
+      style={[styles.container, elevate(5), { backgroundColor: !disabled ? "#fff" : "#ccc" }]}
+      {...{ onPress }}
     >
-      <Text style={{ ...styles.label, color: "#000" }}>{label}</Text>
+      <Text style={{ ...styles.label, color: correct ? 'red' : '#006996' }}>{answer}</Text>
     </RectButton>
   );
 };

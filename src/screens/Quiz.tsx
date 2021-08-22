@@ -1,18 +1,27 @@
-import React, { useState, useRef, useEffect } from "react";
-import { View, Text, TouchableWithoutFeedback } from "react-native";
+import React, { useState, useRef, useEffect, Fragment } from "react";
 import {
-  Difficulty,
-  getQuizQuestions,
-  Question,
-  QuestionState,
-} from "../utils/utils";
+  View,
+  Text,
+  TouchableWithoutFeedback,
+  ActivityIndicator,
+} from "react-native";
+import { Difficulty, getQuizQuestions, QuestionState } from "../utils/utils";
 import { Icon } from "react-native-elements";
 import Button from "../component/Button";
+import Question from "../component/Question";
+import Answers from "../component/Answers";
+
+export type AnswerObject = {
+  question: string;
+  answer: string;
+  correct: boolean;
+  correctAnswer: string;
+};
 
 function Quiz() {
   const [loading, setLoading] = useState(false);
   const [questions, setQuestions] = useState<QuestionState[]>([]);
-  const [userAnswers, setUserAnswers] = useState([]);
+  const [userAnswers, setUserAnswers] = useState<AnswerObject[]>([]);
   const [score, setScore] = useState(0);
   const [gameOver, setGameOver] = useState(true);
   const [TOTAL_QUESTIONS] = useState(10);
@@ -26,12 +35,41 @@ function Quiz() {
       TOTAL_QUESTIONS,
       Difficulty.EASY
     );
-    console.log(newQuestions);
     setQuestions(newQuestions);
     setScore(0);
     setUserAnswers([]);
     setNumber(0);
     setLoading(false);
+  };
+
+  const checkAnswer = () => {
+    if (!gameOver) {
+      const answer = setAnswers.current;
+
+      const correct = questions[number].correct_answer === answer;
+      if (correct) setScore((prev) => prev + 1);
+
+      const answerObject = {
+        questions: questions[number].question,
+        answer,
+        correct,
+        correctAnswer: questions[number].correct_answer,
+      };
+
+      // setUserAnswers((prev) => [...prev, answerObject]);
+      setTimeout(() => {
+        nextQuestion();
+      }, 800);
+    }
+  };
+
+  const nextQuestion = () => {
+    const nextQ = number + 1;
+    if (nextQ === TOTAL_QUESTIONS) {
+      setGameOver(true);
+    } else {
+      setNumber(nextQ);
+    }
   };
 
   useEffect(() => {
@@ -49,53 +87,65 @@ function Quiz() {
       }}
     >
       <View style={{ flex: 1 }}>
-        <View
-          style={{
-            flexDirection: "row",
-            marginTop: 0,
-            justifyContent: "space-between",
-          }}
-        >
-          <Text style={{ fontSize: 16 }}>Questions</Text>
-          <Text
-            style={{
-              fontSize: 16,
-              color: "#006996",
-            }}
-          >
-            1/10
-          </Text>
-        </View>
-        <View
-          style={{
-            flexDirection: "row",
-            alignItems: "center",
-            marginTop: 33,
-            paddingRight: 10,
-          }}
-        >
-          <Text style={{ color: "#006996", fontSize: 16, marginRight: 10 }}>
-            1
-          </Text>
-          <Text style={{ color: "#000", fontSize: 16, textAlign: "left" }}>
-            From which country did the song &quot;Gangnam Style&quot; originate
-            from?
-          </Text>
-        </View>
-        <View
-          style={{
-            flexDirection: "column",
-            alignItems: "center",
-            paddingTop: 14,
-            paddingHorizontal: 24.5,
-            marginTop: 30,
-          }}
-        >
-          <Button label="Answer" />
-          <Button label="Answer" />
-          <Button label="Answer" />
-          <Button label="Answer" />
-        </View>
+        {!loading ? (
+          <Fragment>
+            <View
+              style={{
+                flexDirection: "row",
+                marginTop: 0,
+                justifyContent: "space-between",
+              }}
+            >
+              <Text style={{ fontSize: 16 }}>Questions</Text>
+              <Text
+                style={{
+                  fontSize: 16,
+                  color: "#006996",
+                }}
+              >
+                {number + 1}/{questions.length}
+              </Text>
+            </View>
+            <View style={{ marginVertical: 20 }}>
+              <Text
+                style={{
+                  fontSize: 16,
+                  color: "#006996",
+                }}
+              >
+                Score : {score}
+              </Text>
+            </View>
+            {questions.length > 0 ? (
+              <>
+                <Question
+                  questionNr={number + 1}
+                  question={questions[number].question}
+                />
+                {/* <Answers
+                  answers={questions[number].answers}
+                  {...{ setAnswer, checkAnswer }}
+                  userAnswer={userAnswers ? userAnswers[number] : undefined}
+                /> */}
+                <Answers
+                  answers={questions[number].answers}
+                  {...{ setAnswers, checkAnswer }}
+                  userAnswer={userAnswers ? userAnswers[number] : undefined}
+                />
+              </>
+            ) : (
+              <View
+                style={{
+                  flex: 1,
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+              >
+                <ActivityIndicator size="large" color="#006996" />
+              </View>
+            )}
+          </Fragment>
+        ) : null}
       </View>
       <View
         style={{
@@ -111,9 +161,17 @@ function Quiz() {
           right: 20,
         }}
       >
-        <TouchableWithoutFeedback onPress={() => startQuiz()}>
-          <Icon type="entypo" name="plus" color="white" size={10} />
-        </TouchableWithoutFeedback>
+        <>
+          {!gameOver && !loading && number != TOTAL_QUESTIONS - 1 ? (
+            <TouchableWithoutFeedback onPress={() => nextQuestion()}>
+              <Icon type="entypo" name="plus" color="white" size={10} />
+            </TouchableWithoutFeedback>
+          ) : (
+            <TouchableWithoutFeedback onPress={() => startQuiz()}>
+              <Icon type="entypo" name="user" color="white" size={10} />
+            </TouchableWithoutFeedback>
+          )}
+        </>
       </View>
     </View>
   );

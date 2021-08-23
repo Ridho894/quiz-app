@@ -143,9 +143,9 @@ const Root = () => {
           borderRadius: 50,
           transform: [
             {
-              translateX: tabOffsetValue
-            }
-          ]
+              translateX: tabOffsetValue,
+            },
+          ],
         }}
       ></Animated.View>
     </NavigationContainer>

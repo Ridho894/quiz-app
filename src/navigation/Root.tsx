@@ -9,7 +9,7 @@ import {
   FontAwesome,
   FontAwesome5,
   Ionicons,
-  AntDesign,
+  MaterialIcons,
 } from "@expo/vector-icons";
 import QuizStarted from "../screens/Quiz/QuizStarted";
 import Home from "../screens/Home";
@@ -62,6 +62,10 @@ const Root = () => {
           options={{
             headerTitleAlign: "center",
             headerTintColor: "white",
+            headerRightContainerStyle: { right: 20 },
+            headerRight: (props) => (
+              <FontAwesome5 name="calendar-day" size={20} color={"white"} />
+            ),
             headerStyle: { backgroundColor: colors.blue },
             tabBarActiveTintColor: colors.blue,
             tabBarIcon: ({ focused }) => (

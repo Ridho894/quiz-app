@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useRef } from "react";
+import { View, TouchableOpacity, Animated, Dimensions } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
@@ -15,12 +16,17 @@ import Home from "../screens/Home";
 import colors from "../utils/colors";
 import Profile from "../screens/Profile";
 import Setting from "../screens/Setting";
-import { View, TouchableOpacity } from "react-native";
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 
 const Root = () => {
+  const tabOffsetValue = useRef(new Animated.Value(0)).current;
+  function getWidth() {
+    let width = Dimensions.get("window").width;
+    width = width - 40;
+    return width / 5;
+  }
   return (
     <NavigationContainer>
       <Tab.Navigator>
@@ -40,6 +46,14 @@ const Root = () => {
               />
             ),
           }}
+          listeners={({ navigation, route }) => ({
+            tabPress: (e) => {
+              Animated.spring(tabOffsetValue, {
+                toValue: 0,
+                useNativeDriver: true,
+              }).start();
+            },
+          })}
         />
         <Tab.Screen
           name={"QUIZ"}
@@ -57,6 +71,14 @@ const Root = () => {
               />
             ),
           }}
+          listeners={({ navigation, route }) => ({
+            tabPress: (e) => {
+              Animated.spring(tabOffsetValue, {
+                toValue: getWidth() * 1.4,
+                useNativeDriver: true,
+              }).start();
+            },
+          })}
         />
         <Tab.Screen
           name={"SETTING"}
@@ -74,6 +96,14 @@ const Root = () => {
               />
             ),
           }}
+          listeners={({ navigation, route }) => ({
+            tabPress: (e) => {
+              Animated.spring(tabOffsetValue, {
+                toValue: getWidth() * 2.8,
+                useNativeDriver: true,
+              }).start();
+            },
+          })}
         />
         <Tab.Screen
           name={"PROFILE"}
@@ -91,8 +121,32 @@ const Root = () => {
               />
             ),
           }}
+          listeners={({ navigation, route }) => ({
+            tabPress: (e) => {
+              Animated.spring(tabOffsetValue, {
+                toValue: getWidth() * 4.2,
+                useNativeDriver: true,
+              }).start();
+            },
+          })}
         />
       </Tab.Navigator>
+      <Animated.View
+        style={{
+          width: getWidth(),
+          height: 2,
+          backgroundColor: colors.blue,
+          position: "absolute",
+          bottom: 49,
+          left: 13,
+          borderRadius: 50,
+          transform: [
+            {
+              translateX: tabOffsetValue
+            }
+          ]
+        }}
+      ></Animated.View>
     </NavigationContainer>
   );
 };

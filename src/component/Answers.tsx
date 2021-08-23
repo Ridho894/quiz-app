@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 import { View, Text } from "react-native";
 import Button from "../component/Button";
-import {AnswerObject} from '../screens/Quiz'
+import {AnswerObject} from '../screens/Quiz/QuizStarted'
 
 interface AnswersProps {
   answers: string[];

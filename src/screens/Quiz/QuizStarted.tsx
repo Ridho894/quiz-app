@@ -5,11 +5,11 @@ import {
   TouchableWithoutFeedback,
   ActivityIndicator,
 } from "react-native";
-import { Difficulty, getQuizQuestions, QuestionState } from "../utils/utils";
+import { Difficulty, getQuizQuestions, QuestionState } from "../../utils/utils";
 import { Icon } from "react-native-elements";
-import Button from "../component/Button";
-import Question from "../component/Question";
-import Answers from "../component/Answers";
+import Button from "../../component/Button";
+import Question from "../../component/Question";
+import Answers from "../../component/Answers";
 
 export type AnswerObject = {
   question: string;
@@ -18,7 +18,7 @@ export type AnswerObject = {
   correctAnswer: string;
 };
 
-function Quiz() {
+function QuizStarted() {
   const [loading, setLoading] = useState(false);
   const [questions, setQuestions] = useState<QuestionState[]>([]);
   const [userAnswers, setUserAnswers] = useState<AnswerObject[]>([]);
@@ -172,4 +172,4 @@ function Quiz() {
   );
 }
 
-export default Quiz;
+export default QuizStarted;

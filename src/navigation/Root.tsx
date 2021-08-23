@@ -11,11 +11,12 @@ import {
   Ionicons,
   AntDesign,
 } from "@expo/vector-icons";
-import Quiz from "../screens/Quiz";
+import QuizStarted from "../screens/Quiz/QuizStarted";
 import Home from "../screens/Home";
 import colors from "../utils/colors";
 import Profile from "../screens/Profile";
 import Setting from "../screens/Setting";
+import Quiz from "../screens/Quiz/Quiz";
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();

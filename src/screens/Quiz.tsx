@@ -122,11 +122,6 @@ function Quiz() {
                   questionNr={number + 1}
                   question={questions[number].question}
                 />
-                {/* <Answers
-                  answers={questions[number].answers}
-                  {...{ setAnswer, checkAnswer }}
-                  userAnswer={userAnswers ? userAnswers[number] : undefined}
-                /> */}
                 <Answers
                   answers={questions[number].answers}
                   {...{ setAnswers, checkAnswer }}

@@ -8,7 +8,7 @@ const dimensions = {
   height: Dimensions.get("window").height,
 };
 
-const Quiz = () => {
+const Quiz = ({ navigation }:any) => {
   return (
     <ScrollView>
       <View style={{ flexDirection: "row", paddingBottom: 20 }}>
@@ -31,7 +31,7 @@ const Quiz = () => {
             </Badge>
           </View>
         </View>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.navigate("QuizStarted")}>
           <View
             style={{
               marginTop: 10,

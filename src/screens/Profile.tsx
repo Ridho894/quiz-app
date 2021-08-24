@@ -9,6 +9,7 @@ import {
 } from "@expo/vector-icons";
 import colors from "../utils/colors";
 import { Button } from "react-native-elements";
+
 const Profile = () => {
   return (
     <ScrollView>
@@ -50,7 +51,11 @@ const Profile = () => {
           <List.Item
             title="Ubah Kata Sandi"
             left={(props) => (
-              <MaterialCommunityIcons name={"lock"} color={colors.blue} size={30} />
+              <MaterialCommunityIcons
+                name={"lock"}
+                color={colors.blue}
+                size={30}
+              />
             )}
             right={(props) => (
               <MaterialIcons
@@ -64,7 +69,11 @@ const Profile = () => {
           <List.Item
             title="Syarat dan ketentuan"
             left={(props) => (
-              <MaterialCommunityIcons name={"newspaper-variant"} color={colors.blue} size={30} />
+              <MaterialCommunityIcons
+                name={"newspaper-variant"}
+                color={colors.blue}
+                size={30}
+              />
             )}
             right={(props) => (
               <MaterialIcons
@@ -78,7 +87,11 @@ const Profile = () => {
           <List.Item
             title="Kebijakan Privasi"
             left={(props) => (
-              <MaterialIcons name={"privacy-tip"} color={colors.blue} size={30} />
+              <MaterialIcons
+                name={"privacy-tip"}
+                color={colors.blue}
+                size={30}
+              />
             )}
             right={(props) => (
               <MaterialIcons
@@ -88,6 +101,7 @@ const Profile = () => {
               />
             )}
           />
+          <Divider />
           <List.Item
             title="Pusat Bantuan"
             left={(props) => (

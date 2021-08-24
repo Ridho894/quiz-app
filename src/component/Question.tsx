@@ -10,7 +10,7 @@ const Question = ({ question, questionNr }: QuestionProps) => {
       style={{
         flexDirection: "row",
         alignItems: "center",
-        marginTop: 33,
+        marginTop: 0,
         paddingRight: 10,
       }}
     >

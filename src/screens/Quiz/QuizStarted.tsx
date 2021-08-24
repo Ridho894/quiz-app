@@ -142,7 +142,7 @@ function QuizStarted() {
           </Fragment>
         ) : null}
       </View>
-      <View
+      {/* <View
         style={{
           padding: 20,
           backgroundColor: "#006996",
@@ -167,7 +167,7 @@ function QuizStarted() {
             </TouchableWithoutFeedback>
           )}
         </>
-      </View>
+      </View> */}
     </View>
   );
 }

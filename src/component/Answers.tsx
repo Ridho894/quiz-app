@@ -22,7 +22,7 @@ export default function Answers({
       style={{
         flexDirection: "column",
         alignItems: "center",
-        paddingTop: 14,
+        // paddingTop: 14,
         paddingHorizontal: 24.5,
         marginTop: 30,
       }}

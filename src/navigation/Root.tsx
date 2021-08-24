@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-import { View, TouchableOpacity, Animated, Dimensions } from "react-native";
+import { View, StatusBar, Animated, Dimensions } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
@@ -11,15 +11,39 @@ import {
   Ionicons,
   MaterialIcons,
 } from "@expo/vector-icons";
-import QuizStarted from "../screens/Quiz/QuizStarted";
 import Home from "../screens/Home";
 import colors from "../utils/colors";
 import Profile from "../screens/Profile";
 import Setting from "../screens/Setting";
 import Quiz from "../screens/Quiz/Quiz";
+import QuizStarted from "../screens/Quiz/QuizStarted";
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
+
+const HomeStack = () => {
+  return (
+    <Stack.Navigator initialRouteName="Home">
+      <Stack.Screen name={"Home"} component={Home} />
+    </Stack.Navigator>
+  );
+};
+
+const QuizStack = () => {
+  return (
+    <Stack.Navigator
+      initialRouteName="Quiz"
+      screenOptions={{ headerShown: false }}
+    >
+      <Stack.Screen name={"Quiz"} component={Quiz} />
+      <Stack.Screen name={"QuizStarted"} component={QuizStarted} />
+    </Stack.Navigator>
+  );
+};
+
+const ProfileStack = () => {
+  return;
+};
 
 const Root = () => {
   const tabOffsetValue = useRef(new Animated.Value(0)).current;
@@ -30,6 +54,7 @@ const Root = () => {
   }
   return (
     <NavigationContainer>
+      <StatusBar backgroundColor={colors.blue} />
       <Tab.Navigator>
         <Tab.Screen
           name={"HOME"}
@@ -58,7 +83,7 @@ const Root = () => {
         />
         <Tab.Screen
           name={"QUIZ"}
-          component={Quiz}
+          component={QuizStack}
           options={{
             headerTitleAlign: "center",
             headerTintColor: "white",

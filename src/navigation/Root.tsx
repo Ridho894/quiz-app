@@ -1,6 +1,7 @@
 import React, { useRef } from "react";
 import { View, StatusBar, Animated, Dimensions } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
+// import { createStackNavigator } from "@react-navigation/stack";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Button } from "react-native-elements";
@@ -13,7 +14,7 @@ import {
 } from "@expo/vector-icons";
 import Home from "../screens/Home";
 import colors from "../utils/colors";
-import Profile from "../screens/Profile";
+import Profile from "../screens/Profile/Profile";
 import Setting from "../screens/Setting";
 import Quiz from "../screens/Quiz/Quiz";
 import QuizStarted from "../screens/Quiz/QuizStarted";
@@ -23,7 +24,10 @@ const Tab = createBottomTabNavigator();
 
 const HomeStack = () => {
   return (
-    <Stack.Navigator initialRouteName="Home">
+    <Stack.Navigator
+      initialRouteName="Home"
+      screenOptions={{ headerShown: false }}
+    >
       <Stack.Screen name={"Home"} component={Home} />
     </Stack.Navigator>
   );
@@ -36,13 +40,23 @@ const QuizStack = () => {
       screenOptions={{ headerShown: false }}
     >
       <Stack.Screen name={"Quiz"} component={Quiz} />
-      <Stack.Screen name={"QuizStarted"} component={QuizStarted} />
+      <Stack.Screen
+        name={"QuizStarted"}
+        component={QuizStarted}
+      />
     </Stack.Navigator>
   );
 };
 
 const ProfileStack = () => {
-  return;
+  return (
+    <Stack.Navigator
+      initialRouteName="Profile"
+      screenOptions={{ headerShown: false }}
+    >
+      <Stack.Screen name={"Profile"} component={Profile} />
+    </Stack.Navigator>
+  );
 };
 
 const Root = () => {
@@ -54,11 +68,11 @@ const Root = () => {
   }
   return (
     <NavigationContainer>
-      <StatusBar backgroundColor={colors.blue} />
+      <StatusBar backgroundColor={colors.darkBlue} />
       <Tab.Navigator>
         <Tab.Screen
           name={"HOME"}
-          component={Home}
+          component={HomeStack}
           options={{
             headerTitleAlign: "center",
             headerTintColor: "white",
@@ -88,7 +102,7 @@ const Root = () => {
             headerTitleAlign: "center",
             headerTintColor: "white",
             headerRightContainerStyle: { right: 20 },
-            headerRight: (props) => (
+            headerRight: () => (
               <FontAwesome5 name="calendar-day" size={20} color={"white"} />
             ),
             headerStyle: { backgroundColor: colors.blue },
@@ -137,7 +151,7 @@ const Root = () => {
         />
         <Tab.Screen
           name={"PROFILE"}
-          component={Profile}
+          component={ProfileStack}
           options={{
             headerTitleAlign: "center",
             headerTintColor: "white",

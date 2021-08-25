@@ -7,7 +7,7 @@ import {
   FontAwesome,
   MaterialCommunityIcons,
 } from "@expo/vector-icons";
-import colors from "../utils/colors";
+import colors from "../../utils/colors";
 import { Button } from "react-native-elements";
 
 const Profile = () => {

@@ -2,6 +2,38 @@ import React from "react";
 import { Text, StyleSheet } from "react-native";
 import { RectButton } from "react-native-gesture-handler";
 import { elevate } from "react-native-elevate";
+import { Badge } from "react-native-paper";
+
+interface ButtonProps {
+  key: number;
+  answer: string;
+  onPress: () => void;
+  correct: boolean;
+  disabled: boolean;
+}
+
+const Button = ({ answer, onPress, correct, disabled }: ButtonProps) => {
+  return (
+    <RectButton
+      style={[
+        styles.container,
+        elevate(5),
+        { backgroundColor: !disabled ? "#fff" : "#ccc" },
+      ]}
+      {...{ onPress }}
+    >
+      <Text
+        style={{
+          textAlign: "left",
+          fontWeight: "bold",
+          color: correct ? "red" : "#006996",
+        }}
+      >
+        {answer}
+      </Text>
+    </RectButton>
+  );
+};
 
 const styles = StyleSheet.create({
   container: {
@@ -23,24 +55,4 @@ const styles = StyleSheet.create({
     textTransform: "capitalize",
   },
 });
-
-interface ButtonProps {
-  key: number;
-  answer: string;
-  onPress: () => void;
-  correct: boolean
-  disabled: boolean
-}
-
-const Button = ({ answer, onPress, correct, disabled }: ButtonProps) => {
-  return (
-    <RectButton
-      style={[styles.container, elevate(5), { backgroundColor: !disabled ? "#fff" : "#ccc" }]}
-      {...{ onPress }}
-    >
-      <Text style={{ ...styles.label, color: correct ? 'red' : '#006996' }}>{answer}</Text>
-    </RectButton>
-  );
-};
-
 export default Button;

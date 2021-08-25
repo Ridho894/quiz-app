@@ -26,6 +26,7 @@ import Profile from "../screens/Profile/Profile";
 import Setting from "../screens/Setting";
 import Quiz from "../screens/Quiz/Quiz";
 import QuizStarted from "../screens/Quiz/QuizStarted";
+import DetailProfile from "../screens/Profile/DetailProfile";
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -60,6 +61,7 @@ const ProfileStack = () => {
       screenOptions={{ headerShown: false }}
     >
       <Stack.Screen name={"Profile"} component={Profile} />
+      <Stack.Screen name={"DetailProfile"} component={DetailProfile} />
     </Stack.Navigator>
   );
 };
@@ -94,8 +96,8 @@ const Root = () => {
 
   const theme = isDarkTheme ? CustomDarkTheme : CustomDefaultTheme;
   return (
-    <PaperProvider theme={theme}>
-      <NavigationContainer theme={theme}>
+    <PaperProvider>
+      <NavigationContainer>
         <StatusBar backgroundColor={colors.darkBlue} />
         <Tab.Navigator>
           <Tab.Screen

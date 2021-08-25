@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Dimensions, ScrollView } from "react-native";
+import { View, Dimensions, ScrollView, TouchableOpacity } from "react-native";
 import { Avatar, Title, Caption, List, Divider } from "react-native-paper";
 import {
   Ionicons,
@@ -12,28 +12,30 @@ import { Button } from "react-native-elements";
 
 const heightScreen = Dimensions.get("window").height;
 
-const Profile = () => {
+const Profile = ({ navigation }: any) => {
   return (
     <ScrollView>
       <View>
-        <View
-          style={{
-            margin: 10,
-            top: 10,
-            flexDirection: "row",
-            alignItems: "center",
-          }}
-        >
-          <Avatar.Text
-            size={50}
-            label="MR"
-            style={{ backgroundColor: colors.blue, marginRight: 10 }}
-          />
-          <View>
-            <Title>Muhamad Ridho</Title>
-            <Caption>+62 88806446929</Caption>
+        <TouchableOpacity onPress={() => navigation.navigate('DetailProfile')}>
+          <View
+            style={{
+              margin: 10,
+              top: 10,
+              flexDirection: "row",
+              alignItems: "center",
+            }}
+          >
+            <Avatar.Text
+              size={50}
+              label="MR"
+              style={{ backgroundColor: colors.blue, marginRight: 10 }}
+            />
+            <View>
+              <Title>Muhamad Ridho</Title>
+              <Caption>+62 88806446929</Caption>
+            </View>
           </View>
-        </View>
+        </TouchableOpacity>
         <View style={{ margin: 10 }}>
           <Title>Akun</Title>
           <List.Item

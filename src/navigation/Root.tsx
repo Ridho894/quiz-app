@@ -40,10 +40,7 @@ const QuizStack = () => {
       screenOptions={{ headerShown: false }}
     >
       <Stack.Screen name={"Quiz"} component={Quiz} />
-      <Stack.Screen
-        name={"QuizStarted"}
-        component={QuizStarted}
-      />
+      <Stack.Screen name={"QuizStarted"} component={QuizStarted} />
     </Stack.Navigator>
   );
 };
@@ -61,11 +58,13 @@ const ProfileStack = () => {
 
 const Root = () => {
   const tabOffsetValue = useRef(new Animated.Value(0)).current;
+
   function getWidth() {
     let width = Dimensions.get("window").width;
     width = width - 40;
     return width / 5;
   }
+
   return (
     <NavigationContainer>
       <StatusBar backgroundColor={colors.darkBlue} />

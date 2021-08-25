@@ -8,7 +8,7 @@ const dimensions = {
   height: Dimensions.get("window").height,
 };
 
-const Quiz = ({ navigation }:any) => {
+const Quiz = ({ navigation }: any) => {
   return (
     <ScrollView>
       <View style={{ flexDirection: "row", paddingBottom: 20 }}>
@@ -51,7 +51,12 @@ const Quiz = ({ navigation }:any) => {
           >
             <View style={{ margin: 10 }}>
               <Title>Quiz Dasar Pemrograman</Title>
-              <Caption>sas</Caption>
+              <Caption>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                Provident suscipit sit aperiam reprehenderit laboriosam iste
+                rerum, culpa aliquid laborum exercitationem voluptatibus ullam
+                deleniti aut maxime quam expedita enim dicta perferendis.
+              </Caption>
             </View>
           </View>
         </TouchableOpacity>

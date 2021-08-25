@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, ScrollView } from "react-native";
+import { View, Dimensions, ScrollView } from "react-native";
 import { Avatar, Title, Caption, List, Divider } from "react-native-paper";
 import {
   Ionicons,
@@ -10,10 +10,12 @@ import {
 import colors from "../../utils/colors";
 import { Button } from "react-native-elements";
 
+const heightScreen = Dimensions.get("window").height;
+
 const Profile = () => {
   return (
     <ScrollView>
-      <View>
+      <View style={{ backgroundColor: "#ccc", height: heightScreen }}>
         <View
           style={{
             margin: 10,

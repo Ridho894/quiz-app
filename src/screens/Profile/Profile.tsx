@@ -15,7 +15,7 @@ const heightScreen = Dimensions.get("window").height;
 const Profile = () => {
   return (
     <ScrollView>
-      <View style={{ backgroundColor: "#ccc", height: heightScreen }}>
+      <View>
         <View
           style={{
             margin: 10,

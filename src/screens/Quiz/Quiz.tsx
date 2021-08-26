@@ -21,7 +21,15 @@ const data = [
     id: "2",
     title: "Programming Course",
     date: "24",
-    day: "Sunday",
+    day: "Thursday",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipisicing elit Provident suscipit sit aperiam reprehenderit laboriosam iste rerum, culpa aliquid laborum exercitationem voluptatibus ullam deleniti aut maxime quam expedita enim dicta perferendis.",
+  },
+  {
+    id: "3",
+    title: "Science Course",
+    date: "24",
+    day: "Saturday",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipisicing elit Provident suscipit sit aperiam reprehenderit laboriosam iste rerum, culpa aliquid laborum exercitationem voluptatibus ullam deleniti aut maxime quam expedita enim dicta perferendis.",
   },
@@ -51,7 +59,7 @@ const Quiz = ({ navigation }: any) => {
               </Badge>
             </View>
           </View>
-          <TouchableOpacity onPress={() => navigation.navigate("QuizStarted")}>
+          <TouchableOpacity onPress={() => navigation.navigate("Home")}>
             <View
               style={{
                 marginTop: 10,

@@ -67,7 +67,6 @@ const ProfileStack = () => {
 };
 
 const Root = () => {
-  const [isDarkTheme, setIsDarkTheme] = useState(false);
 
   const tabOffsetValue = useRef(new Animated.Value(0)).current;
 
@@ -76,25 +75,6 @@ const Root = () => {
     width = width - 40;
     return width / 5;
   }
-
-  const CustomDefaultTheme = {
-    ...NavigationDefaultTheme,
-    ...PaperDefaultTheme,
-    colors: {
-      ...NavigationDefaultTheme.colors,
-      ...PaperDefaultTheme.colors,
-    },
-  };
-  const CustomDarkTheme = {
-    ...NavigationDarkTheme,
-    ...PaperDarkTheme,
-    colors: {
-      ...NavigationDarkTheme.colors,
-      ...PaperDarkTheme.colors,
-    },
-  };
-
-  const theme = isDarkTheme ? CustomDarkTheme : CustomDefaultTheme;
   return (
     <PaperProvider>
       <NavigationContainer>

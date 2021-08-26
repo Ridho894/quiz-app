@@ -1,5 +1,11 @@
 import React, { useRef, useState } from "react";
-import { View, StatusBar, Animated, Dimensions } from "react-native";
+import {
+  View,
+  StatusBar,
+  Animated,
+  Dimensions,
+  TouchableOpacity,
+} from "react-native";
 import {
   NavigationContainer,
   DefaultTheme as NavigationDefaultTheme,
@@ -27,6 +33,7 @@ import Setting from "../screens/Setting";
 import Quiz from "../screens/Quiz/Quiz";
 import QuizStarted from "../screens/Quiz/QuizStarted";
 import DetailProfile from "../screens/Profile/DetailProfile";
+import QuizCalendar from "../screens/Quiz/QuizCalendar";
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -50,6 +57,7 @@ const QuizStack = () => {
     >
       <Stack.Screen name={"Quiz"} component={Quiz} />
       <Stack.Screen name={"QuizStarted"} component={QuizStarted} />
+      <Stack.Screen name={"QuizCalendar"} component={QuizCalendar} />
     </Stack.Navigator>
   );
 };
@@ -66,8 +74,7 @@ const ProfileStack = () => {
   );
 };
 
-const Root = () => {
-
+const Root = ({ navigation }: any) => {
   const tabOffsetValue = useRef(new Animated.Value(0)).current;
 
   function getWidth() {
@@ -107,13 +114,17 @@ const Root = () => {
           />
           <Tab.Screen
             name={"QUIZ"}
-            component={QuizStack}
+            component={Quiz}
             options={{
               headerTitleAlign: "center",
               headerTintColor: "white",
               headerRightContainerStyle: { right: 20 },
               headerRight: () => (
-                <FontAwesome5 name="calendar-day" size={20} color={"white"} />
+                <TouchableOpacity
+                  onPress={() => navigation.navigate("QuizCalendar")}
+                >
+                  <FontAwesome5 name="calendar-day" size={20} color={"white"} />
+                </TouchableOpacity>
               ),
               headerStyle: { backgroundColor: colors.blue },
               tabBarActiveTintColor: colors.blue,

@@ -59,7 +59,7 @@ const Quiz = ({ navigation }: any) => {
               </Badge>
             </View>
           </View>
-          <TouchableOpacity onPress={() => navigation.navigate("Home")}>
+          <TouchableOpacity onPress={() => navigation.navigate("QuizStarted")}>
             <View
               style={{
                 marginTop: 10,

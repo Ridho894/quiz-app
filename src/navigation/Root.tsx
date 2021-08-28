@@ -34,45 +34,64 @@ import Quiz from "../screens/Quiz/Quiz";
 import QuizStarted from "../screens/Quiz/QuizStarted";
 import DetailProfile from "../screens/Profile/DetailProfile";
 import QuizCalendar from "../screens/Quiz/QuizCalendar";
+import Welcome from "../screens/welcome/Welcome";
 
-const Stack = createNativeStackNavigator();
-const Tab = createBottomTabNavigator();
+const WelcomeStack = createNativeStackNavigator();
 
-const HomeStack = () => {
+const WelcomeStackNavigator = () => {
   return (
-    <Stack.Navigator
+    <WelcomeStack.Navigator
+      initialRouteName="Welcome"
+      screenOptions={{ headerShown: false }}
+    >
+      <WelcomeStack.Screen name={"Welcome"} component={Welcome} />
+    </WelcomeStack.Navigator>
+  );
+};
+
+const HomeStack = createNativeStackNavigator();
+
+const HomeStackNavigator = () => {
+  return (
+    <HomeStack.Navigator
       initialRouteName="Home"
       screenOptions={{ headerShown: false }}
     >
-      <Stack.Screen name={"Home"} component={Home} />
-    </Stack.Navigator>
+      <HomeStack.Screen name={"Home"} component={Home} />
+    </HomeStack.Navigator>
   );
 };
 
-const QuizStack = () => {
+const QuizStack = createNativeStackNavigator();
+
+const QuizStackNavigator = () => {
   return (
-    <Stack.Navigator
+    <QuizStack.Navigator
       initialRouteName="Quiz"
       screenOptions={{ headerShown: false }}
     >
-      <Stack.Screen name={"Quiz"} component={Quiz} />
-      <Stack.Screen name={"QuizStarted"} component={QuizStarted} />
-      <Stack.Screen name={"QuizCalendar"} component={QuizCalendar} />
-    </Stack.Navigator>
+      <QuizStack.Screen name={"Quiz"} component={Quiz} />
+      <QuizStack.Screen name={"QuizStarted"} component={QuizStarted} />
+      <QuizStack.Screen name={"QuizCalendar"} component={QuizCalendar} />
+    </QuizStack.Navigator>
   );
 };
 
-const ProfileStack = () => {
+const ProfileStack = createNativeStackNavigator();
+
+const ProfileStackNavigator = () => {
   return (
-    <Stack.Navigator
+    <ProfileStack.Navigator
       initialRouteName="Profile"
       screenOptions={{ headerShown: false }}
     >
-      <Stack.Screen name={"Profile"} component={Profile} />
-      <Stack.Screen name={"DetailProfile"} component={DetailProfile} />
-    </Stack.Navigator>
+      <ProfileStack.Screen name={"Profile"} component={Profile} />
+      <ProfileStack.Screen name={"DetailProfile"} component={DetailProfile} />
+    </ProfileStack.Navigator>
   );
 };
+
+const MainTab = createBottomTabNavigator();
 
 const Root = ({ navigation }: any) => {
   const tabOffsetValue = useRef(new Animated.Value(0)).current;
@@ -86,10 +105,10 @@ const Root = ({ navigation }: any) => {
     <PaperProvider>
       <NavigationContainer>
         <StatusBar backgroundColor={colors.darkBlue} />
-        <Tab.Navigator>
-          <Tab.Screen
+        <MainTab.Navigator>
+          <MainTab.Screen
             name={"HOME"}
-            component={HomeStack}
+            component={HomeStackNavigator}
             options={{
               headerTitleAlign: "center",
               headerTintColor: "white",
@@ -112,9 +131,9 @@ const Root = ({ navigation }: any) => {
               },
             })}
           />
-          <Tab.Screen
+          <MainTab.Screen
             name={"QUIZ"}
-            component={Quiz}
+            component={QuizStackNavigator}
             options={{
               headerTitleAlign: "center",
               headerTintColor: "white",
@@ -145,7 +164,7 @@ const Root = ({ navigation }: any) => {
               },
             })}
           />
-          <Tab.Screen
+          <MainTab.Screen
             name={"SETTING"}
             component={Setting}
             options={{
@@ -170,9 +189,9 @@ const Root = ({ navigation }: any) => {
               },
             })}
           />
-          <Tab.Screen
+          <MainTab.Screen
             name={"PROFILE"}
-            component={ProfileStack}
+            component={ProfileStackNavigator}
             options={{
               headerTitleAlign: "center",
               headerTintColor: "white",
@@ -195,7 +214,7 @@ const Root = ({ navigation }: any) => {
               },
             })}
           />
-        </Tab.Navigator>
+        </MainTab.Navigator>
         <Animated.View
           style={{
             width: getWidth(),

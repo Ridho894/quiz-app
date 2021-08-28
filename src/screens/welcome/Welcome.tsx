@@ -5,11 +5,11 @@ const backgroundImage = require("../../assets/SplashScreen.png");
 
 const Welcome = ({ navigation }: any) => {
   return (
-    <ImageBackground source={backgroundImage}>
+    // <ImageBackground source={backgroundImage}>
       <View>
         <Text>Welcome</Text>
       </View>
-    </ImageBackground>
+    // </ImageBackground>
   );
 };
 

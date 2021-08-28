@@ -54,9 +54,10 @@ const HomeStack = createNativeStackNavigator();
 const HomeStackNavigator = () => {
   return (
     <HomeStack.Navigator
-      initialRouteName="Home"
+      initialRouteName="Welcome"
       screenOptions={{ headerShown: false }}
     >
+      <HomeStack.Screen name={"Welcome"} component={Welcome} />
       <HomeStack.Screen name={"Home"} component={Home} />
     </HomeStack.Navigator>
   );
@@ -102,7 +103,6 @@ const Root = ({ navigation }: any) => {
     return width / 5;
   }
   return (
-    <PaperProvider>
       <NavigationContainer>
         <StatusBar backgroundColor={colors.darkBlue} />
         <MainTab.Navigator>
@@ -232,7 +232,6 @@ const Root = ({ navigation }: any) => {
           }}
         ></Animated.View>
       </NavigationContainer>
-    </PaperProvider>
   );
 };
 

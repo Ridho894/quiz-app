@@ -46,7 +46,7 @@ export const WelcomeStack = () => {
       initialRouteName={"Welcome"}
       screenOptions={{ headerShown: false }}
     >
-      <Stack.Screen name={"Introducing"} component={Introducing} />
+      <Stack.Screen name={"Login"} component={Login} />
       <Stack.Screen name={"Welcome"} component={Welcome} />
     </Stack.Navigator>
   );

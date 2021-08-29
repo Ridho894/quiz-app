@@ -26,16 +26,16 @@ const styles = StyleSheet.create({
 
 interface SubslideProps {
   subtitle: string;
-  description: string;
+  // description: string;
   last?: boolean;
   //   x: Animated.Node<number>;
 }
 
-const Subslide = ({ subtitle, description, last }: SubslideProps) => {
+const Subslide = ({ subtitle }: SubslideProps) => {
   return (
     <View style={styles.container}>
       <Text style={styles.subtitle}>{subtitle}</Text>
-      <Text style={styles.description}>{description}</Text>
+      {/* <Text style={styles.description}>{description}</Text> */}
     </View>
   );
 };

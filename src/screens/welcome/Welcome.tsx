@@ -7,6 +7,7 @@ import {
   Dimensions,
   Animated,
 } from "react-native";
+import { Button } from "react-native-elements";
 import Slide, { SLIDE_HEIGHT } from "../../component/Slide";
 import Subslide from "../../component/Subslide";
 import colors from "../../utils/colors";
@@ -43,7 +44,7 @@ const slides = [
   { title: "Funky", subtitle: "Look Good", description: "yes" },
 ];
 
-const Welcome = () => {
+const Welcome = ({ navigation }: any) => {
   const x = useValue(0);
   // const backgroundColor = interpolateColor(x, {
   //   inputRange: [0, width * 2, width *3],
@@ -80,15 +81,25 @@ const Welcome = () => {
             },
           ]}
         >
-          {slides.map(({ subtitle, description }, index) => (
+          {slides.map(({ subtitle }, index) => (
             <Subslide
               key={index}
               last={index === slides.length - 1}
-              {...{ subtitle, description }}
+              {...{ subtitle }}
             />
           ))}
         </Animated.View>
       </View>
+      <Button
+        title="GET STARTED"
+        buttonStyle={{
+          backgroundColor: colors.darkBlue,
+          width: width / 2,
+          alignSelf: "center",
+          marginBottom: 30,
+        }}
+        onPress={() => navigation.navigate("Login")}
+      />
     </View>
   );
 };

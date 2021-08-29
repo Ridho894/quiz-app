@@ -18,7 +18,11 @@ const Root = () => {
           component={WelcomeStack}
           options={{ headerShown: false }}
         />
-        <Stack.Screen name={"BarNavigation"} component={BarNavigation} />
+        <Stack.Screen
+          name={"BarNavigation"}
+          component={BarNavigation}
+          options={{ headerShown: false }}
+        />
         {/* <BarNavigation /> */}
       </Stack.Navigator>
     </NavigationContainer>

@@ -129,6 +129,7 @@ const Profile = ({ navigation }: any) => {
               backgroundColor: colors.blue,
               marginTop: 50,
             }}
+            onPress={() => navigation.navigate("WelcomeScreen")}
           />
         </View>
       </View>

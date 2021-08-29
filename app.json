@@ -4,7 +4,7 @@
     "slug": "quiz-app",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./src/assets/Logo.png",
     "splash": {
       "image": "./src/assets/NewSplashScreen.png",
       "resizeMode": "contain",

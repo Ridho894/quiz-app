@@ -41,7 +41,10 @@ const Stack = createNativeStackNavigator();
 
 export const HomeStack = () => {
   return (
-    <Stack.Navigator initialRouteName={"Home"}>
+    <Stack.Navigator
+      initialRouteName={"Home"}
+      screenOptions={{ headerShown: false }}
+    >
       <Stack.Screen name={"Home"} component={Home} />
     </Stack.Navigator>
   );
@@ -49,7 +52,10 @@ export const HomeStack = () => {
 
 export const QuizStack = () => {
   return (
-    <Stack.Navigator initialRouteName={"Quiz"}>
+    <Stack.Navigator
+      initialRouteName={"Quiz"}
+      screenOptions={{ headerShown: false }}
+    >
       <Stack.Screen name={"Quiz"} component={Quiz} />
       <Stack.Screen name={"QuizStarted"} component={QuizStarted} />
       <Stack.Screen name={"QuizCalendar"} component={QuizCalendar} />
@@ -59,16 +65,23 @@ export const QuizStack = () => {
 
 export const ProfileStack = () => {
   return (
-    <Stack.Navigator initialRouteName={"Profile"}>
+    <Stack.Navigator
+      initialRouteName={"Profile"}
+      screenOptions={{ headerShown: false }}
+    >
       <Stack.Screen name={"Profile"} component={Profile} />
+      <Stack.Screen name={"DetailProfile"} component={DetailProfile} />
     </Stack.Navigator>
   );
 };
 
 export const SettingStack = () => {
   return (
-    <Stack.Navigator initialRouteName={"Setting"}>
-      <Stack.Screen name={'Setting'} component={Setting} />
+    <Stack.Navigator
+      initialRouteName={"Setting"}
+      screenOptions={{ headerShown: false }}
+    >
+      <Stack.Screen name={"Setting"} component={Setting} />
     </Stack.Navigator>
   );
 };

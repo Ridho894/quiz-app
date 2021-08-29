@@ -36,8 +36,21 @@ import DetailProfile from "../screens/Profile/DetailProfile";
 import QuizCalendar from "../screens/Quiz/QuizCalendar";
 import Welcome from "../screens/welcome/Welcome";
 import Login from "../screens/Login";
+import Introducing from "../screens/welcome/Introducing1";
 
 const Stack = createNativeStackNavigator();
+
+export const WelcomeStack = () => {
+  return (
+    <Stack.Navigator
+      initialRouteName={"Welcome"}
+      screenOptions={{ headerShown: false }}
+    >
+      <Stack.Screen name={"Introducing"} component={Introducing} />
+      <Stack.Screen name={"Welcome"} component={Welcome} />
+    </Stack.Navigator>
+  );
+};
 
 export const HomeStack = () => {
   return (

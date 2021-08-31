@@ -4,12 +4,15 @@ import {
   Text,
   TouchableWithoutFeedback,
   ActivityIndicator,
+  Dimensions,
 } from "react-native";
 import { Difficulty, getQuizQuestions, QuestionState } from "../../utils/utils";
 import { Icon } from "react-native-elements";
 import Button from "../../component/Button";
 import Question from "../../component/Question";
 import Answers from "../../component/Answers";
+import { ProgressBar } from "react-native-paper";
+import colors from "../../utils/colors";
 
 export type AnswerObject = {
   question: string;
@@ -82,11 +85,11 @@ function QuizStarted() {
         flex: 1,
         justifyContent: "flex-end",
         position: "relative",
-        padding: 20,
+        padding: 0,
         backgroundColor: "#fff",
       }}
     >
-      <View style={{ flex: 1 }}>
+      <View style={{ flex: 1, padding: 20 }}>
         {!loading ? (
           <Fragment>
             <View
@@ -127,6 +130,18 @@ function QuizStarted() {
                   {...{ setAnswers, checkAnswer }}
                   userAnswer={userAnswers ? userAnswers[number] : undefined}
                 />
+                <View
+                  style={{
+                    backgroundColor: "white",
+                    padding: 20,
+                    width: Dimensions.get("window").width,
+                    alignSelf: "center",
+                    position: "absolute",
+                    bottom: 0,
+                  }}
+                >
+                  <ProgressBar progress={0.3} color={colors.blue} />
+                </View>
               </>
             ) : (
               <View

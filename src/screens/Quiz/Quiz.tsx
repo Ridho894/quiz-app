@@ -39,7 +39,7 @@ const Quiz = ({ navigation }: any) => {
   return (
     <ScrollView>
       {data.map((item) => (
-        <View style={{ flexDirection: "row", paddingBottom: 20 }}>
+        <View key={item.id} style={{ flexDirection: "row", paddingBottom: 20 }}>
           <View style={{ alignSelf: "flex-start", margin: 10 }}>
             <View
               style={{

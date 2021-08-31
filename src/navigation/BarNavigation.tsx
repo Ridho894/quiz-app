@@ -63,17 +63,7 @@ const BarNavigation = ({ navigation }: any) => {
         name={"QUIZ"}
         component={QuizStack}
         options={{
-          headerTitleAlign: "center",
-          headerTintColor: "white",
-          headerRightContainerStyle: { right: 20 },
-          headerRight: () => (
-            <TouchableOpacity
-              onPress={() => navigation.navigate("QuizCalendar")}
-            >
-              <FontAwesome5 name="calendar-day" size={20} color={"white"} />
-            </TouchableOpacity>
-          ),
-          headerStyle: { backgroundColor: colors.blue },
+          headerShown: false,
           tabBarActiveTintColor: colors.blue,
           tabBarIcon: ({ focused }) => (
             <FontAwesome5
@@ -82,6 +72,7 @@ const BarNavigation = ({ navigation }: any) => {
               color={focused ? colors.blue : "grey"}
             />
           ),
+          // tabBarStyle: { display: "none" },
         }}
         listeners={({ navigation, route }) => ({
           tabPress: (e) => {

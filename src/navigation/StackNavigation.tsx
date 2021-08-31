@@ -1,33 +1,8 @@
-import React, { useRef, useState } from "react";
-import {
-  View,
-  StatusBar,
-  Animated,
-  Dimensions,
-  TouchableOpacity,
-} from "react-native";
-import {
-  NavigationContainer,
-  DefaultTheme as NavigationDefaultTheme,
-  DarkTheme as NavigationDarkTheme,
-} from "@react-navigation/native";
-import {
-  Provider as PaperProvider,
-  DefaultTheme as PaperDefaultTheme,
-  DarkTheme as PaperDarkTheme,
-} from "react-native-paper";
+import React, { useLayoutEffect } from "react";
+import { TouchableOpacity } from "react-native";
+import { getFocusedRouteNameFromRoute } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { Button } from "react-native-elements";
-import {
-  MaterialCommunityIcons,
-  FontAwesome,
-  FontAwesome5,
-  Ionicons,
-  MaterialIcons,
-} from "@expo/vector-icons";
 import Home from "../screens/Home";
-import colors from "../utils/colors";
 import Profile from "../screens/Profile/Profile";
 import Setting from "../screens/Setting";
 import Quiz from "../screens/Quiz/Quiz";
@@ -36,7 +11,8 @@ import DetailProfile from "../screens/Profile/DetailProfile";
 import QuizCalendar from "../screens/Quiz/QuizCalendar";
 import Welcome from "../screens/welcome/Welcome";
 import Login from "../screens/Login";
-import Introducing from "../screens/welcome/Introducing1";
+import { FontAwesome5 } from "@expo/vector-icons";
+import colors from "../utils/colors";
 
 const Stack = createNativeStackNavigator();
 
@@ -63,14 +39,43 @@ export const HomeStack = () => {
   );
 };
 
-export const QuizStack = () => {
+export const QuizStack = ({ navigation, route }: any) => {
+  useLayoutEffect(() => {
+    const routeName = getFocusedRouteNameFromRoute(route);
+    if (routeName === "QuizStarted") {
+      navigation.setOptions({ tabBarStyle: { display: "none" } });
+    } else {
+      navigation.setOptions({ tabBarStyle: { display: "flex" } });
+    }
+  }, [navigation, route]);
   return (
     <Stack.Navigator
       initialRouteName={"Quiz"}
-      screenOptions={{ headerShown: false }}
+      screenOptions={{
+        headerShown: true,
+        headerTitleAlign: "center",
+        headerTintColor: "white",
+        headerStyle: { backgroundColor: colors.blue },
+      }}
     >
-      <Stack.Screen name={"Quiz"} component={Quiz} />
-      <Stack.Screen name={"QuizStarted"} component={QuizStarted} />
+      <Stack.Screen
+        name={"Quiz"}
+        component={Quiz}
+        options={{
+          headerRight: () => (
+            <TouchableOpacity
+              onPress={() => navigation.navigate("QuizCalendar")}
+            >
+              <FontAwesome5 name="calendar-day" size={20} color={"white"} />
+            </TouchableOpacity>
+          ),
+        }}
+      />
+      <Stack.Screen
+        name={"QuizStarted"}
+        component={QuizStarted}
+        options={{ statusBarHidden: true }}
+      />
       <Stack.Screen name={"QuizCalendar"} component={QuizCalendar} />
     </Stack.Navigator>
   );

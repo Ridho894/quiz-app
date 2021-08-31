@@ -23,7 +23,6 @@ const Root = () => {
           component={BarNavigation}
           options={{ headerShown: false }}
         />
-        {/* <BarNavigation /> */}
       </Stack.Navigator>
     </NavigationContainer>
   );

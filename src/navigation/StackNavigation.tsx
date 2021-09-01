@@ -64,7 +64,7 @@ export const QuizStack = ({ navigation, route }: any) => {
         options={{
           headerRight: () => (
             <TouchableOpacity
-              onPress={() => navigation.navigate("QuizCalendar")}
+              onPress={() => navigation.navigate("Calendar")}
             >
               <FontAwesome5 name="calendar-day" size={20} color={"white"} />
             </TouchableOpacity>
@@ -76,7 +76,7 @@ export const QuizStack = ({ navigation, route }: any) => {
         component={QuizStarted}
         options={{ statusBarHidden: true }}
       />
-      <Stack.Screen name={"QuizCalendar"} component={QuizCalendar} />
+      <Stack.Screen name={"Calendar"} component={QuizCalendar} options={{ headerTitle:"Calendar" }} />
     </Stack.Navigator>
   );
 };

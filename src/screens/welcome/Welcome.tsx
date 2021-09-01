@@ -93,7 +93,7 @@ const Welcome = ({ navigation }: any) => {
       <Button
         title="GET STARTED"
         buttonStyle={{
-          backgroundColor: colors.darkBlue,
+          backgroundColor: colors.blue,
           width: width / 2,
           alignSelf: "center",
           marginBottom: 30,

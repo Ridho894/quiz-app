@@ -9,13 +9,19 @@ import {
 import { Agenda, Calendar, CalendarList } from "react-native-calendars";
 import { Badge, Caption, Subheading, Title } from "react-native-paper";
 import colors from "../../utils/colors";
+import moment from "moment";
 
 function QuizCalendar({ navigation }: any) {
+  // const formatTime = ({time}:any) => {
+  //   return moment(time).format('HH.mm')
+  //
+  console.log(moment().get("date"));
   return (
     <ScrollView>
-      <View>
-        <Calendar
-          current={"2021-08-27"}
+      <View style={{ flex: 1 }}>
+        {/* <Calendar
+          current={moment().get("date")}
+          enableSwipeMonths={true}
           markedDates={{
             "2021-08-27": {
               selected: true,
@@ -25,8 +31,42 @@ function QuizCalendar({ navigation }: any) {
             "2021-08-30": { marked: true },
             "2021-08-28": { marked: true, dotColor: "red", activeOpacity: 0 },
           }}
+        /> */}
+        <Agenda
+          // items={{
+          //   "2012-05-22": [{ name: "item 1 - any js object" }],
+          //   "2012-05-23": [{ name: "item 2 - any js object", height: 80 }],
+          //   "2012-05-24": [],
+          //   "2012-05-25": [
+          //     { name: "item 3 - any js object" },
+          //     { name: "any js object" },
+          //   ],
+          // }}
+          renderEmptyData={(day: any) => {
+            return (
+              <View style={{ flex: 1 }}>
+                <Text
+                  style={{
+                    textAlign: "center",
+                    fontSize: 18,
+                    padding: 10,
+                    color: "grey",
+                  }}
+                >
+                  No Schedule
+                </Text>
+              </View>
+            );
+          }}
+          renderItem={(item) => {
+            return (
+              <View>
+                <Text>Schedule here...</Text>
+              </View>
+            );
+          }}
         />
-        <View style={{ flexDirection: "row", paddingBottom: 20 }}>
+        {/* <View style={{ flexDirection: "row", paddingBottom: 20 }}>
           <View style={{ alignSelf: "flex-start", margin: 10 }}>
             <View
               style={{
@@ -75,7 +115,7 @@ function QuizCalendar({ navigation }: any) {
               </View>
             </View>
           </TouchableOpacity>
-        </View>
+        </View> */}
       </View>
     </ScrollView>
   );

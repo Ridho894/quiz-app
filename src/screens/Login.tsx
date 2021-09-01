@@ -9,7 +9,7 @@ const { height, width } = Dimensions.get("window");
 const Login = ({ navigation }: any) => {
   const [showPassword, setShowPassword] = useState(false);
   return (
-    <ScrollView>
+    // <ScrollView>
       <View style={{ backgroundColor: "#f0f0f0", height: height }}>
         <Image
           source={require("../assets/Logo.png")}
@@ -26,7 +26,7 @@ const Login = ({ navigation }: any) => {
             label="Email"
             placeholder="Masukkan Email"
             mode="outlined"
-            theme={{ colors: { primary: colors.blue } }}
+            theme={{ colors: { primary: colors.darkBlue } }}
             style={{ width: width / 1.1, alignSelf: "center" }}
           />
           <TextInput
@@ -43,7 +43,7 @@ const Login = ({ navigation }: any) => {
                 onPress={() => setShowPassword((prev) => !prev)}
               />
             }
-            theme={{ colors: { primary: colors.blue } }}
+            theme={{ colors: { primary: colors.darkBlue } }}
             style={{ width: width / 1.1, alignSelf: "center", marginTop: 30 }}
           />
           <Button
@@ -57,8 +57,11 @@ const Login = ({ navigation }: any) => {
             onPress={() => navigation.navigate("BarNavigation")}
           />
         </View>
+        <View style={{ margin: 20, position: "absolute", right: 0, bottom: 10 }}>
+          <Text style={{ color: colors.darkBlue }}>Version 0.0.1</Text>
+        </View>
       </View>
-    </ScrollView>
+    // </ScrollView>
   );
 };
 

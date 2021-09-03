@@ -112,9 +112,7 @@ const BarNavigation = ({ navigation }: any) => {
         name={"PROFILE"}
         component={ProfileStack}
         options={{
-          headerTitleAlign: "center",
-          headerTintColor: "white",
-          headerStyle: { backgroundColor: colors.blue },
+          headerShown: false,
           tabBarActiveTintColor: colors.blue,
           tabBarIcon: ({ focused }) => (
             <FontAwesome
@@ -123,6 +121,7 @@ const BarNavigation = ({ navigation }: any) => {
               color={focused ? colors.blue : "grey"}
             />
           ),
+          // tabBarStyle: { display: "none" },
         }}
         listeners={({ navigation, route }) => ({
           tabPress: (e) => {

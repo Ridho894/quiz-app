@@ -47,6 +47,11 @@ export const QuizStack = ({ navigation, route }: any) => {
     } else {
       navigation.setOptions({ tabBarStyle: { display: "flex" } });
     }
+    // if (routeName === "DetailProfile") {
+    //   navigation.setOptions({ tabBarStyle: { display: "none" } });
+    // } else {
+    //   navigation.setOptions({ tabBarStyle: { display: "flex" } });
+    // }
   }, [navigation, route]);
   return (
     <Stack.Navigator
@@ -63,9 +68,7 @@ export const QuizStack = ({ navigation, route }: any) => {
         component={Quiz}
         options={{
           headerRight: () => (
-            <TouchableOpacity
-              onPress={() => navigation.navigate("Calendar")}
-            >
+            <TouchableOpacity onPress={() => navigation.navigate("Calendar")}>
               <FontAwesome5 name="calendar-day" size={20} color={"white"} />
             </TouchableOpacity>
           ),
@@ -76,7 +79,11 @@ export const QuizStack = ({ navigation, route }: any) => {
         component={QuizStarted}
         options={{ statusBarHidden: true }}
       />
-      <Stack.Screen name={"Calendar"} component={QuizCalendar} options={{ headerTitle:"Calendar" }} />
+      <Stack.Screen
+        name={"Calendar"}
+        component={QuizCalendar}
+        options={{ headerTitle: "Calendar" }}
+      />
     </Stack.Navigator>
   );
 };
@@ -85,10 +92,19 @@ export const ProfileStack = () => {
   return (
     <Stack.Navigator
       initialRouteName={"Profile"}
-      screenOptions={{ headerShown: false }}
+      screenOptions={{
+        headerShown: true,
+        headerTitleAlign: "center",
+        headerTintColor: "white",
+        headerStyle: { backgroundColor: colors.blue },
+      }}
     >
       <Stack.Screen name={"Profile"} component={Profile} />
-      <Stack.Screen name={"DetailProfile"} component={DetailProfile} />
+      <Stack.Screen
+        name={"DetailProfile"}
+        component={DetailProfile}
+        // options={{ statusBarHidden: true }}
+      />
     </Stack.Navigator>
   );
 };

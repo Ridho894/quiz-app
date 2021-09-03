@@ -13,6 +13,9 @@ import Welcome from "../screens/welcome/Welcome";
 import Login from "../screens/Login";
 import { FontAwesome5 } from "@expo/vector-icons";
 import colors from "../utils/colors";
+import HelpCenter from "../screens/About/HelpCenter";
+import PrivacyPolicy from "../screens/About/PrivacyPolicy";
+import Requirement from "../screens/About/Requirement";
 
 const Stack = createNativeStackNavigator();
 
@@ -100,11 +103,10 @@ export const ProfileStack = () => {
       }}
     >
       <Stack.Screen name={"Profile"} component={Profile} />
-      <Stack.Screen
-        name={"DetailProfile"}
-        component={DetailProfile}
-        // options={{ statusBarHidden: true }}
-      />
+      <Stack.Screen name={"DetailProfile"} component={DetailProfile} />
+      <Stack.Screen name={"HelpCenter"} component={HelpCenter} />
+      <Stack.Screen name={"PrivacyPolicy"} component={PrivacyPolicy} />
+      <Stack.Screen name={"Requirement"} component={Requirement} />
     </Stack.Navigator>
   );
 };

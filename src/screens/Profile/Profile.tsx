@@ -16,7 +16,7 @@ const Profile = ({ navigation }: any) => {
   return (
     <ScrollView>
       <View>
-        <TouchableOpacity onPress={() => navigation.navigate('DetailProfile')}>
+        <TouchableOpacity onPress={() => navigation.navigate("DetailProfile")}>
           <View
             style={{
               margin: 10,
@@ -37,7 +37,7 @@ const Profile = ({ navigation }: any) => {
           </View>
         </TouchableOpacity>
         <View style={{ margin: 10 }}>
-          <Title>Akun</Title>
+          <Title>Pengaturan</Title>
           <List.Item
             title="Ubah Profile"
             left={(props) => (
@@ -70,59 +70,67 @@ const Profile = ({ navigation }: any) => {
             )}
           />
           <Title>Tentang</Title>
-          <List.Item
-            title="Syarat dan ketentuan"
-            left={(props) => (
-              <MaterialCommunityIcons
-                name={"newspaper-variant"}
-                color={colors.blue}
-                size={30}
-              />
-            )}
-            right={(props) => (
-              <MaterialIcons
-                name={"keyboard-arrow-right"}
-                color={colors.blue}
-                size={30}
-              />
-            )}
-          />
+          <TouchableOpacity onPress={() => navigation.navigate("Requirement")}>
+            <List.Item
+              title="Syarat dan ketentuan"
+              left={(props) => (
+                <MaterialCommunityIcons
+                  name={"newspaper-variant"}
+                  color={colors.blue}
+                  size={30}
+                />
+              )}
+              right={(props) => (
+                <MaterialIcons
+                  name={"keyboard-arrow-right"}
+                  color={colors.blue}
+                  size={30}
+                />
+              )}
+            />
+          </TouchableOpacity>
           <Divider />
-          <List.Item
-            title="Kebijakan Privasi"
-            left={(props) => (
-              <MaterialIcons
-                name={"privacy-tip"}
-                color={colors.blue}
-                size={30}
-              />
-            )}
-            right={(props) => (
-              <MaterialIcons
-                name={"keyboard-arrow-right"}
-                color={colors.blue}
-                size={30}
-              />
-            )}
-          />
+          <TouchableOpacity
+            onPress={() => navigation.navigate("PrivacyPolicy")}
+          >
+            <List.Item
+              title="Kebijakan Privasi"
+              left={(props) => (
+                <MaterialIcons
+                  name={"privacy-tip"}
+                  color={colors.blue}
+                  size={30}
+                />
+              )}
+              right={(props) => (
+                <MaterialIcons
+                  name={"keyboard-arrow-right"}
+                  color={colors.blue}
+                  size={30}
+                />
+              )}
+            />
+          </TouchableOpacity>
           <Divider />
-          <List.Item
-            title="Pusat Bantuan"
-            left={(props) => (
-              <MaterialCommunityIcons
-                name={"help-circle"}
-                color={colors.blue}
-                size={30}
-              />
-            )}
-            right={(props) => (
-              <MaterialIcons
-                name={"keyboard-arrow-right"}
-                color={colors.blue}
-                size={30}
-              />
-            )}
-          />
+          <TouchableOpacity onPress={() => navigation.navigate("HelpCenter")}>
+            <List.Item
+              title="Pusat Bantuan"
+              left={(props) => (
+                <MaterialCommunityIcons
+                  name={"help-circle"}
+                  color={colors.blue}
+                  size={30}
+                />
+              )}
+              right={(props) => (
+                <MaterialIcons
+                  name={"keyboard-arrow-right"}
+                  color={colors.blue}
+                  size={30}
+                />
+              )}
+            />
+          </TouchableOpacity>
           <Button
             title="Sign Out"
             buttonStyle={{

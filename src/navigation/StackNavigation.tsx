@@ -50,11 +50,6 @@ export const QuizStack = ({ navigation, route }: any) => {
     } else {
       navigation.setOptions({ tabBarStyle: { display: "flex" } });
     }
-    // if (routeName === "DetailProfile") {
-    //   navigation.setOptions({ tabBarStyle: { display: "none" } });
-    // } else {
-    //   navigation.setOptions({ tabBarStyle: { display: "flex" } });
-    // }
   }, [navigation, route]);
   return (
     <Stack.Navigator
@@ -91,7 +86,15 @@ export const QuizStack = ({ navigation, route }: any) => {
   );
 };
 
-export const ProfileStack = () => {
+export const ProfileStack = ({ navigation, route }: any) => {
+  useLayoutEffect(() => {
+    const routeName = getFocusedRouteNameFromRoute(route);
+    if (routeName === "DetailProfile") {
+      navigation.setOptions({ tabBarStyle: { display: "none" } });
+    } else {
+      navigation.setOptions({ tabBarStyle: { display: "flex" } });
+    }
+  }, [navigation, route]);
   return (
     <Stack.Navigator
       initialRouteName={"Profile"}
@@ -117,7 +120,10 @@ export const SettingStack = () => {
       initialRouteName={"Setting"}
       screenOptions={{ headerShown: false }}
     >
-      <Stack.Screen name={"Setting"} component={Setting} />
+      <Stack.Screen
+        name={"Setting"}
+        component={Setting}
+      />
     </Stack.Navigator>
   );
 };

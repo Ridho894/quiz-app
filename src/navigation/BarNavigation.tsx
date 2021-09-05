@@ -60,9 +60,10 @@ const BarNavigation = ({ navigation }: any) => {
         })}
       />
       <MainTab.Screen
-        name={"SETTING"}
+        name={"SEARCH"}
         component={SettingStack}
         options={{
+          headerShown: false,
           headerTitleAlign: "center",
           headerTintColor: "white",
           headerStyle: { backgroundColor: colors.blue },

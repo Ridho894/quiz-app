@@ -2,13 +2,15 @@ import React from "react";
 import { View, ScrollView, Dimensions, StyleSheet } from "react-native";
 import { Avatar, Title, Caption, List, TextInput } from "react-native-paper";
 import colors from "../../utils/colors";
+import { Button } from "react-native-elements";
 
 const widthScreen = Dimensions.get("window").width;
+const heightScreen = Dimensions.get("window").height;
 
 const DetailProfile = () => {
   return (
     <ScrollView>
-      <View>
+      <View style={{ height: heightScreen - 73 }}>
         <Avatar.Text
           label="MR"
           size={65}
@@ -23,7 +25,7 @@ const DetailProfile = () => {
           dense={true}
           style={styles.textInput}
           label="Name"
-        //   disabled={true}
+          //   disabled={true}
           outlineColor={colors.blue}
           theme={{ colors: { primary: colors.blue } }}
         />
@@ -35,6 +37,16 @@ const DetailProfile = () => {
           outlineColor={colors.blue}
           theme={{ colors: { primary: colors.blue } }}
         />
+        <View style={{ position: "absolute", left: 0, right: 0, bottom: 0 }}>
+          <Button
+            title="Save"
+            buttonStyle={{
+              padding: 20,
+              borderRadius: 0,
+              backgroundColor: colors.blue,
+            }}
+          />
+        </View>
       </View>
     </ScrollView>
   );

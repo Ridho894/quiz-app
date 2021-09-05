@@ -91,6 +91,12 @@ export const ProfileStack = ({ navigation, route }: any) => {
     const routeName = getFocusedRouteNameFromRoute(route);
     if (routeName === "DetailProfile") {
       navigation.setOptions({ tabBarStyle: { display: "none" } });
+    } else if (routeName === "HelpCenter") {
+      navigation.setOptions({ tabBarStyle: { display: "none" } });
+    } else if (routeName === "PrivacyPolicy") {
+      navigation.setOptions({ tabBarStyle: { display: "none" } });
+    } else if (routeName === "Requirement") {
+      navigation.setOptions({ tabBarStyle: { display: "none" } });
     } else {
       navigation.setOptions({ tabBarStyle: { display: "flex" } });
     }
@@ -120,10 +126,7 @@ export const SettingStack = () => {
       initialRouteName={"Setting"}
       screenOptions={{ headerShown: false }}
     >
-      <Stack.Screen
-        name={"Setting"}
-        component={Setting}
-      />
+      <Stack.Screen name={"Setting"} component={Setting} />
     </Stack.Navigator>
   );
 };

@@ -60,6 +60,31 @@ const BarNavigation = ({ navigation }: any) => {
         })}
       />
       <MainTab.Screen
+        name={"SETTING"}
+        component={SettingStack}
+        options={{
+          headerTitleAlign: "center",
+          headerTintColor: "white",
+          headerStyle: { backgroundColor: colors.blue },
+          tabBarActiveTintColor: colors.blue,
+          tabBarIcon: ({ focused }) => (
+            <Ionicons
+              name="search-sharp"
+              size={20}
+              color={focused ? colors.blue : "grey"}
+            />
+          ),
+        }}
+        listeners={({ navigation, route }) => ({
+          tabPress: (e) => {
+            Animated.spring(tabOffsetValue, {
+              toValue: getWidth() * 2.8,
+              useNativeDriver: true,
+            }).start();
+          },
+        })}
+      />
+      <MainTab.Screen
         name={"QUIZ"}
         component={QuizStack}
         options={{
@@ -83,31 +108,7 @@ const BarNavigation = ({ navigation }: any) => {
           },
         })}
       />
-      <MainTab.Screen
-        name={"SETTING"}
-        component={SettingStack}
-        options={{
-          headerTitleAlign: "center",
-          headerTintColor: "white",
-          headerStyle: { backgroundColor: colors.blue },
-          tabBarActiveTintColor: colors.blue,
-          tabBarIcon: ({ focused }) => (
-            <Ionicons
-              name="settings"
-              size={20}
-              color={focused ? colors.blue : "grey"}
-            />
-          ),
-        }}
-        listeners={({ navigation, route }) => ({
-          tabPress: (e) => {
-            Animated.spring(tabOffsetValue, {
-              toValue: getWidth() * 2.8,
-              useNativeDriver: true,
-            }).start();
-          },
-        })}
-      />
+
       <MainTab.Screen
         name={"PROFILE"}
         component={ProfileStack}

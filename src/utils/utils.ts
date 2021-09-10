@@ -1,13 +1,21 @@
 export const _ = (array: any[]) => [...array].sort(() => Math.random() - 0.7)
 
-export enum Difficulty{
+export enum Difficulty {
     EASY = "easy",
     MEDIUM = "medium",
     HARD = "hard"
 }
 
+export enum Category {
+    SCIENCE_COMPUTERS = "science: computers",
+    SCIENCE_MATHEMATICS = "science: mathematics",
+    SPORTS = "sports",
+    MYTHOLOGY = "mythology",
+    CELEBRITIES = "celebrities"
+}
+
 export type Question = {
-    category: string;
+    category: Category;
     correct_answer: string;
     difficult: string;
     incorrect_answers: string[];

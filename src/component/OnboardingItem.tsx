@@ -8,6 +8,7 @@ import {
   useWindowDimensions,
 } from "react-native";
 import intro from "../data/intro";
+import colors from "../utils/colors";
 
 const OnboardingItem = ({ item }: any) => {
   const { width } = useWindowDimensions();
@@ -39,7 +40,7 @@ const styles = StyleSheet.create({
     fontWeight: "800",
     fontSize: 28,
     marginBottom: 10,
-    color: "#493d8a",
+    color: colors.blue,
     textAlign: "center",
   },
   description: {

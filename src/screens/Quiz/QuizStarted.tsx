@@ -13,6 +13,7 @@ import Question from "../../component/Question";
 import Answers from "../../component/Answers";
 import { ProgressBar } from "react-native-paper";
 import colors from "../../utils/colors";
+import { decode } from "html-entities";
 
 export type AnswerObject = {
   question: string;
@@ -21,7 +22,8 @@ export type AnswerObject = {
   correctAnswer: string;
 };
 
-function QuizStarted() {
+function QuizStarted({ route }: any) {
+  const difficulty = route.params.difficulty;
   const [loading, setLoading] = useState(false);
   const [questions, setQuestions] = useState<QuestionState[]>([]);
   const [userAnswers, setUserAnswers] = useState<AnswerObject[]>([]);
@@ -36,7 +38,8 @@ function QuizStarted() {
     setGameOver(false);
     const newQuestions = await getQuizQuestions(
       TOTAL_QUESTIONS,
-      Difficulty.EASY
+      // @ts-ignore
+      Difficulty[difficulty]
     );
     setQuestions(newQuestions);
     setScore(0);
@@ -123,7 +126,7 @@ function QuizStarted() {
               <>
                 <Question
                   questionNr={number + 1}
-                  question={questions[number].question}
+                  question={decode(questions[number].question)}
                 />
                 <Answers
                   answers={questions[number].answers}
@@ -140,7 +143,7 @@ function QuizStarted() {
                     bottom: 0,
                   }}
                 >
-                  <ProgressBar progress={0.3} color={colors.blue} />
+                  <ProgressBar progress={number + 0.1}  color={colors.blue} />
                 </View>
               </>
             ) : (

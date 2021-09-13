@@ -14,6 +14,7 @@ const data = [
     title: "English Course",
     date: "24",
     day: "Sunday",
+    difficulty: "EASY",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipisicing elit Provident suscipit sit aperiam reprehenderit laboriosam iste rerum, culpa aliquid laborum exercitationem voluptatibus ullam deleniti aut maxime quam expedita enim dicta perferendis.",
   },
@@ -22,6 +23,7 @@ const data = [
     title: "Programming Course",
     date: "24",
     day: "Thursday",
+    difficulty: "MEDIUM",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipisicing elit Provident suscipit sit aperiam reprehenderit laboriosam iste rerum, culpa aliquid laborum exercitationem voluptatibus ullam deleniti aut maxime quam expedita enim dicta perferendis.",
   },
@@ -30,6 +32,7 @@ const data = [
     title: "Science Course",
     date: "24",
     day: "Saturday",
+    difficulty: "HARD",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipisicing elit Provident suscipit sit aperiam reprehenderit laboriosam iste rerum, culpa aliquid laborum exercitationem voluptatibus ullam deleniti aut maxime quam expedita enim dicta perferendis.",
   },
@@ -59,7 +62,9 @@ const Quiz = ({ navigation }: any) => {
               </Badge>
             </View>
           </View>
-          <TouchableOpacity onPress={() => navigation.navigate("QuizStarted")}>
+          <TouchableOpacity onPress={() => navigation.navigate("QuizStarted", {
+            difficulty: item.difficulty
+          })}>
             <View
               style={{
                 marginTop: 10,

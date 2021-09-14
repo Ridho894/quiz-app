@@ -9,6 +9,7 @@ import {
 import { SearchBar } from "react-native-elements";
 import { Title, Switch, useTheme } from "react-native-paper";
 import { Ionicons } from "@expo/vector-icons";
+import Card from "../../component/Card";
 const widthScreen = Dimensions.get("window").width;
 
 const Search = () => {
@@ -30,6 +31,9 @@ const Search = () => {
           placeholder="Search..."
           style={{ height: 50, fontSize: 20 }}
         />
+      </View>
+      <View style={{ margin: 10 }}>
+        <Card.Quiz />
       </View>
     </View>
   );

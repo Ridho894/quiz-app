@@ -33,7 +33,11 @@ const BarNavigation = ({ navigation }: any) => {
   }
   return (
     // <NavigationContainer>
-    <MainTab.Navigator>
+    <MainTab.Navigator
+      screenOptions={{
+        tabBarShowLabel: false,
+      }}
+    >
       <MainTab.Screen
         name={"HOME"}
         component={HomeStack}
@@ -45,7 +49,7 @@ const BarNavigation = ({ navigation }: any) => {
           tabBarIcon: ({ focused }) => (
             <MaterialCommunityIcons
               name="home"
-              size={20}
+              size={30}
               color={focused ? colors.blue : "grey"}
             />
           ),
@@ -71,7 +75,7 @@ const BarNavigation = ({ navigation }: any) => {
           tabBarIcon: ({ focused }) => (
             <Ionicons
               name="search-sharp"
-              size={20}
+              size={30}
               color={focused ? colors.blue : "grey"}
             />
           ),
@@ -94,7 +98,7 @@ const BarNavigation = ({ navigation }: any) => {
           tabBarIcon: ({ focused }) => (
             <FontAwesome5
               name="tasks"
-              size={20}
+              size={30}
               color={focused ? colors.blue : "grey"}
             />
           ),
@@ -119,7 +123,7 @@ const BarNavigation = ({ navigation }: any) => {
           tabBarIcon: ({ focused }) => (
             <FontAwesome
               name="user"
-              size={20}
+              size={30}
               color={focused ? colors.blue : "grey"}
             />
           ),

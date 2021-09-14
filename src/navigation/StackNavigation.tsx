@@ -4,7 +4,7 @@ import { getFocusedRouteNameFromRoute } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Home from "../screens/Home";
 import Profile from "../screens/Profile/Profile";
-import Setting from "../screens/Setting";
+import Search from "../screens/Search/Search";
 import Quiz from "../screens/Quiz/Quiz";
 import QuizStarted from "../screens/Quiz/QuizStarted";
 import DetailProfile from "../screens/Profile/DetailProfile";
@@ -120,13 +120,13 @@ export const ProfileStack = ({ navigation, route }: any) => {
   );
 };
 
-export const SettingStack = () => {
+export const SearchStack = () => {
   return (
     <Stack.Navigator
-      initialRouteName={"Setting"}
+      initialRouteName={"Search"}
       screenOptions={{ headerShown: false }}
     >
-      <Stack.Screen name={"Setting"} component={Setting} />
+      <Stack.Screen name={"Search"} component={Search} />
     </Stack.Navigator>
   );
 };

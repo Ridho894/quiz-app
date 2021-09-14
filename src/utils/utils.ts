@@ -15,7 +15,7 @@ export enum Category {
 }
 
 export type Question = {
-    category: Category;
+    category: string;
     correct_answer: string;
     difficult: string;
     incorrect_answers: string[];

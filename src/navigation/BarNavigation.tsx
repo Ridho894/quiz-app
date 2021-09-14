@@ -18,7 +18,7 @@ import {
   HomeStack,
   ProfileStack,
   QuizStack,
-  SettingStack,
+  SearchStack,
 } from "./StackNavigation";
 
 const MainTab = createBottomTabNavigator();
@@ -61,7 +61,7 @@ const BarNavigation = ({ navigation }: any) => {
       />
       <MainTab.Screen
         name={"SEARCH"}
-        component={SettingStack}
+        component={SearchStack}
         options={{
           headerShown: false,
           headerTitleAlign: "center",

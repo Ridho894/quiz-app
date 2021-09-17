@@ -16,6 +16,7 @@ import colors from "../utils/colors";
 import HelpCenter from "../screens/About/HelpCenter";
 import PrivacyPolicy from "../screens/About/PrivacyPolicy";
 import Requirement from "../screens/About/Requirement";
+import SearchDashboard from "../screens/Search/SearchDashboard";
 import SearchResults from "../screens/Search/SearchResults";
 
 const Stack = createNativeStackNavigator();
@@ -128,7 +129,8 @@ export const SearchStack = () => {
       screenOptions={{ headerShown: false }}
     >
       <Stack.Screen name={"Search"} component={Search} />
-      <Stack.Screen name={"SearchResult"} component={SearchResults} />
+      <Stack.Screen name={"SearchDashboard"} component={SearchDashboard} />
+      <Stack.Screen name={"SearchResults"} component={SearchResults} />
     </Stack.Navigator>
   );
 };

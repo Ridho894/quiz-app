@@ -27,7 +27,7 @@ const Search = ({ navigation }: any) => {
       >
         <SearchBar
           search="quiz"
-          onSearch={() => navigation.navigate("SearchResult")}
+          onSearch={() => navigation.navigate("SearchDashboard")}
         />
       </View>
       <View style={{ margin: 10 }}>

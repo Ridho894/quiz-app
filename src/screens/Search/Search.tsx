@@ -6,13 +6,13 @@ import {
   Dimensions,
   TextInput,
 } from "react-native";
-import { SearchBar } from "react-native-elements";
+import SearchBar from "../../component/SearchBar";
 import { Title, Switch, useTheme } from "react-native-paper";
 import { Ionicons } from "@expo/vector-icons";
 import Card from "../../component/Card";
 const widthScreen = Dimensions.get("window").width;
 
-const Search = () => {
+const Search = ({ navigation }: any) => {
   return (
     <View style={{ flex: 1 }}>
       <View
@@ -20,16 +20,14 @@ const Search = () => {
           display: "flex",
           flexDirection: "row",
           alignItems: "center",
-          paddingHorizontal: 10,
-          backgroundColor: "#dbdbdb",
+          // paddingHorizontal: 10,
           margin: 10,
           borderRadius: 10,
         }}
       >
-        <Ionicons name="search-sharp" size={25} color="gray" />
-        <TextInput
-          placeholder="Search..."
-          style={{ height: 50, fontSize: 20 }}
+        <SearchBar
+          search="quiz"
+          onSearch={() => navigation.navigate("SearchResult")}
         />
       </View>
       <View style={{ margin: 10 }}>

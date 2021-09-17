@@ -79,6 +79,7 @@ const BarNavigation = ({ navigation }: any) => {
               color={focused ? colors.blue : "grey"}
             />
           ),
+          tabBarHideOnKeyboard: true,
         }}
         listeners={({ navigation, route }) => ({
           tabPress: (e) => {

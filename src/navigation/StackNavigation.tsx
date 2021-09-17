@@ -115,9 +115,27 @@ export const ProfileStack = ({ navigation, route }: any) => {
     >
       <Stack.Screen name={"Profile"} component={Profile} />
       <Stack.Screen name={"DetailProfile"} component={DetailProfile} />
-      <Stack.Screen name={"HelpCenter"} component={HelpCenter} />
-      <Stack.Screen name={"PrivacyPolicy"} component={PrivacyPolicy} />
-      <Stack.Screen name={"Requirement"} component={Requirement} />
+      <Stack.Screen
+        name={"HelpCenter"}
+        component={HelpCenter}
+        options={{
+          headerTitle: "FAQ",
+          headerTitleAlign: "left",
+        }}
+      />
+      <Stack.Screen
+        name={"PrivacyPolicy"}
+        component={PrivacyPolicy}
+        options={{
+          headerTitle: "Privacy And Policy",
+          headerTitleAlign: "left",
+        }}
+      />
+      <Stack.Screen
+        name={"Requirement"}
+        component={Requirement}
+        options={{ headerTitle: "About", headerTitleAlign: "left" }}
+      />
     </Stack.Navigator>
   );
 };

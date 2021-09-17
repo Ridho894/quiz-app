@@ -37,7 +37,7 @@ const Profile = ({ navigation }: any) => {
           </View>
         </TouchableOpacity>
         <View style={{ margin: 10 }}>
-          <Title>Pengaturan</Title>
+          {/* <Title>Pengaturan</Title>
           <List.Item
             title="Ubah Profile"
             left={(props) => (
@@ -68,11 +68,11 @@ const Profile = ({ navigation }: any) => {
                 size={30}
               />
             )}
-          />
+          /> */}
           <Title>Tentang</Title>
           <TouchableOpacity onPress={() => navigation.navigate("Requirement")}>
             <List.Item
-              title="Syarat dan ketentuan"
+              title="Tentang"
               left={(props) => (
                 <MaterialCommunityIcons
                   name={"newspaper-variant"}

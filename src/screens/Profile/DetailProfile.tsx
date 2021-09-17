@@ -9,46 +9,55 @@ const heightScreen = Dimensions.get("window").height;
 
 const DetailProfile = () => {
   return (
-    <ScrollView>
-      <View style={{ height: heightScreen - 73 }}>
-        <Avatar.Text
-          label="MR"
-          size={65}
-          style={{
+    // <ScrollView>
+    <View style={{ height: heightScreen, flex: 1 }}>
+      <Avatar.Text
+        label="MR"
+        size={65}
+        style={{
+          backgroundColor: colors.blue,
+          alignSelf: "center",
+          marginTop: 20,
+        }}
+      />
+      <TextInput
+        mode="outlined"
+        dense={true}
+        style={styles.textInput}
+        label="Name"
+        //   disabled={true}
+        outlineColor={colors.blue}
+        theme={{ colors: { primary: colors.blue } }}
+      />
+      <TextInput
+        mode="outlined"
+        dense={true}
+        style={styles.textInput}
+        label="Email"
+        outlineColor={colors.blue}
+        theme={{ colors: { primary: colors.blue } }}
+      />
+      <View
+        style={{
+          width: "100%",
+          justifyContent: "center",
+          alignItems: "center",
+          position: "absolute",
+          bottom: 0,
+        }}
+      >
+        <Button
+          title="Save"
+          buttonStyle={{
+            padding: 20,
+            borderRadius: 0,
             backgroundColor: colors.blue,
-            alignSelf: "center",
-            marginTop: 20,
+            width: widthScreen,
           }}
         />
-        <TextInput
-          mode="outlined"
-          dense={true}
-          style={styles.textInput}
-          label="Name"
-          //   disabled={true}
-          outlineColor={colors.blue}
-          theme={{ colors: { primary: colors.blue } }}
-        />
-        <TextInput
-          mode="outlined"
-          dense={true}
-          style={styles.textInput}
-          label="Email"
-          outlineColor={colors.blue}
-          theme={{ colors: { primary: colors.blue } }}
-        />
-        <View style={{ position: "absolute", left: 0, right: 0, bottom: 0 }}>
-          <Button
-            title="Save"
-            buttonStyle={{
-              padding: 20,
-              borderRadius: 0,
-              backgroundColor: colors.blue,
-            }}
-          />
-        </View>
       </View>
-    </ScrollView>
+    </View>
+    // </ScrollView>
   );
 };
 

@@ -18,7 +18,8 @@ import PrivacyPolicy from "../screens/About/PrivacyPolicy";
 import Requirement from "../screens/About/Requirement";
 import SearchDashboard from "../screens/Search/SearchDashboard";
 import SearchResults from "../screens/Search/SearchResults";
-
+import QuizRecords from "../screens/Quiz/QuizRecords";
+import Header from "../component/Header";
 const Stack = createNativeStackNavigator();
 
 export const WelcomeStack = () => {
@@ -48,6 +49,8 @@ export const QuizStack = ({ navigation, route }: any) => {
   useLayoutEffect(() => {
     const routeName = getFocusedRouteNameFromRoute(route);
     if (routeName === "QuizStarted") {
+      navigation.setOptions({ tabBarStyle: { display: "none" } });
+    } else if (routeName === "QuizRecords") {
       navigation.setOptions({ tabBarStyle: { display: "none" } });
     } else {
       navigation.setOptions({ tabBarStyle: { display: "flex" } });
@@ -80,9 +83,14 @@ export const QuizStack = ({ navigation, route }: any) => {
         options={{ statusBarHidden: true }}
       />
       <Stack.Screen
-        name={"Calendar"}
+        name={"QuizCalendar"}
         component={QuizCalendar}
         options={{ headerTitle: "Calendar" }}
+      />
+      <Stack.Screen
+        name={"QuizRecords"}
+        component={QuizRecords}
+        options={{ header: (props) => <Header.Transparent {...props} /> }}
       />
     </Stack.Navigator>
   );

@@ -7,6 +7,8 @@ import {
   Text,
   StatusBar,
 } from "react-native";
+import { Button } from "react-native-paper";
+
 const DATA = [
   {
     id: "1",
@@ -30,7 +32,7 @@ const Item = ({ title }: any) => (
     <Text style={styles.title}>{title}</Text>
   </View>
 );
-export default function Home() {
+export default function Home({ navigation }: any) {
   const [refreshing, setrefreshing] = useState(false);
   const [data, setdata] = useState(DATA);
   const onRefresh = () => {
@@ -56,6 +58,13 @@ export default function Home() {
         refreshing={refreshing}
         onRefresh={onRefresh}
       />
+      <Button
+        onPress={() =>
+          navigation.navigate("QUIZ", { screen: "QuizRecords" })
+        }
+      >
+        Quiz Records
+      </Button>
     </SafeAreaView>
   );
 }

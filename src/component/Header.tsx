@@ -1,26 +1,30 @@
 import React from "react";
 import { View, Text, TouchableOpacity, Dimensions } from "react-native";
-import { Ionicons } from "@expo/vector-icons";
+import { FontAwesome5 } from "@expo/vector-icons";
+import colors from "../utils/colors";
 
 const widthScreen = Dimensions.get("window").width;
 
-const Header = ({ props }: any) => {
-  const { insets, previous, navigation } = props;
-  return (
-    <View>
-      {previous && (
-        <View>
-          <Ionicons
-            name={"arrow-back-sharp"}
-            size={30}
-            color={"white"}
-            onPress={() => navigation.goBack()}
-          />
-        </View>
-      )}
-      <View>
-          <Text></Text>
+const Header = {
+  Transparent: (props: any) => {
+    const { insets, previous, navigation } = props;
+    return (
+      <View
+        style={{
+          position: "absolute",
+          backgroundColor: "transparent",
+          zIndex: 100,
+          top: 0,
+          left: 0,
+          right: 0,
+        }}
+      >
+        <TouchableOpacity>
+          <FontAwesome5 name="edit" size={20} color={colors.blue} />
+        </TouchableOpacity>
       </View>
-    </View>
-  );
+    );
+  },
 };
+
+export default Header;

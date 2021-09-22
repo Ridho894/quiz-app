@@ -16,7 +16,16 @@ function QuizRecords() {
           borderBottomRightRadius: 20,
         }}
       >
-        <Text>Your Score is 90</Text>
+        <Text
+          style={{
+            color: "white",
+            textAlign: "center",
+            height: "100%",
+            textAlignVertical: "center",
+          }}
+        >
+          Your Score is 90
+        </Text>
       </View>
       <View
         style={{
@@ -31,10 +40,71 @@ function QuizRecords() {
           elevation: 4,
           width: layouts.windowWidth - 10,
           alignSelf: "center",
-          padding: 10,
+          padding: 20,
+          paddingVertical: 30,
         }}
       >
-        <Text>Records</Text>
+        <View
+          style={{
+            flexDirection: "row",
+            flexWrap: "wrap",
+            justifyContent: "space-between",
+            width: "100%",
+          }}
+        >
+          <View>
+            <View
+              style={{
+                flexDirection: "row",
+                alignSelf: "flex-start",
+              }}
+            >
+              <Text style={{ color: colors.yellow }}>⬤</Text>
+              <View style={{ left: 10 }}>
+                <Text>100%</Text>
+                <Text>Completion</Text>
+              </View>
+            </View>
+            <View
+              style={{
+                flexDirection: "row",
+                alignSelf: "flex-start",
+              }}
+            >
+              <Text style={{ color: colors.yellow }}>⬤</Text>
+              <View style={{ left: 10 }}>
+                <Text>10</Text>
+                <Text>Total Questions</Text>
+              </View>
+            </View>
+          </View>
+          <View>
+            <View
+              style={{
+                flexDirection: "row",
+                alignSelf: "flex-start",
+              }}
+            >
+              <Text style={{ color: colors.yellow }}>⬤</Text>
+              <View style={{ left: 10 }}>
+                <Text>100%</Text>
+                <Text>Completion</Text>
+              </View>
+            </View>
+            <View
+              style={{
+                flexDirection: "row",
+                alignSelf: "flex-start",
+              }}
+            >
+              <Text style={{ color: colors.yellow }}>⬤</Text>
+              <View style={{ left: 10 }}>
+                <Text>10</Text>
+                <Text>Total Questions</Text>
+              </View>
+            </View>
+          </View>
+        </View>
       </View>
       {/* </View> */}
     </View>

@@ -22,7 +22,7 @@ export type AnswerObject = {
   correctAnswer: string;
 };
 
-function QuizStarted({ route }: any) {
+function QuizStarted({ route, navigation }: any) {
   const difficulty = route.params.difficulty;
   const [loading, setLoading] = useState(false);
   const [questions, setQuestions] = useState<QuestionState[]>([]);
@@ -65,7 +65,7 @@ function QuizStarted({ route }: any) {
       // setUserAnswers((prev) => [...prev, answerObject]);
       setTimeout(() => {
         nextQuestion();
-      }, 800);
+      }, 1000);
     }
   };
 
@@ -73,6 +73,7 @@ function QuizStarted({ route }: any) {
     const nextQ = number + 1;
     if (nextQ === TOTAL_QUESTIONS) {
       setGameOver(true);
+      return navigation.navigate("QuizRecords", { score: score });
     } else {
       setNumber(nextQ);
     }
@@ -143,7 +144,7 @@ function QuizStarted({ route }: any) {
                     bottom: 0,
                   }}
                 >
-                  <ProgressBar progress={number + 0.1}  color={colors.blue} />
+                  <ProgressBar progress={number + 1} color={colors.blue} />
                 </View>
               </>
             ) : (

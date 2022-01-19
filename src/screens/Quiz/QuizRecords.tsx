@@ -1,9 +1,10 @@
 import React from "react";
-import { View, Text } from "react-native";
+import { View, Text, BackHandler } from "react-native";
 import colors from "../../utils/colors";
 import layouts from "../../utils/layouts";
 
-function QuizRecords() {
+function QuizRecords({ route }: any) {
+  const score = route.params.score;
   return (
     <View
       style={{ backgroundColor: colors.gray, height: layouts.windowHeight }}
@@ -24,7 +25,7 @@ function QuizRecords() {
             textAlignVertical: "center",
           }}
         >
-          Your Score is 90
+          Your Score is {score}0
         </Text>
       </View>
       <View

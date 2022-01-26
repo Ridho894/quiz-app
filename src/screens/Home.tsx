@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   SafeAreaView,
   View,
@@ -8,6 +8,7 @@ import {
   StatusBar,
 } from "react-native";
 import { Button } from "react-native-paper";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const DATA = [
   {
@@ -51,6 +52,7 @@ export default function Home({ navigation }: any) {
   const renderItem = ({ item }: any) => <Item title={item.title} />;
   return (
     <SafeAreaView style={styles.container}>
+      <Text style={{ fontSize: 20 }}>Hello</Text>
       <FlatList
         data={data}
         renderItem={renderItem}
@@ -59,9 +61,7 @@ export default function Home({ navigation }: any) {
         onRefresh={onRefresh}
       />
       <Button
-        onPress={() =>
-          navigation.navigate("QUIZ", { screen: "QuizRecords" })
-        }
+        onPress={() => navigation.navigate("QUIZ", { screen: "QuizRecords" })}
       >
         Quiz Records
       </Button>
@@ -72,12 +72,12 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     marginTop: StatusBar.currentHeight || 0,
+    margin: 20,
   },
   item: {
     backgroundColor: "#fad586",
     padding: 20,
-    marginVertical: 8,
-    marginHorizontal: 16,
+    marginVertical: 10,
   },
   title: {
     fontSize: 20,

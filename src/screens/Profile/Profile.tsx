@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { View, Dimensions, ScrollView, TouchableOpacity } from "react-native";
 import { Avatar, Title, Caption, List, Divider } from "react-native-paper";
 import {
@@ -9,10 +9,24 @@ import {
 } from "@expo/vector-icons";
 import colors from "../../utils/colors";
 import { Button } from "react-native-elements";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const heightScreen = Dimensions.get("window").height;
 
 const Profile = ({ navigation }: any) => {
+  const [user, setUser] = useState<any>({});
+  const findUser = async () => {
+    const result = await AsyncStorage.getItem("user");
+    if (result !== null) {
+      setUser(JSON.parse(result));
+    }
+  };
+  useEffect(() => {
+    findUser();
+    // AsyncStorage.clear();
+  }, []);
+  const name = user.name;
+  const handleLogout = () => {};
   return (
     <ScrollView>
       <View>
@@ -27,11 +41,11 @@ const Profile = ({ navigation }: any) => {
           >
             <Avatar.Text
               size={50}
-              label="MR"
+              label={`${name.slice(0, 1)}`}
               style={{ backgroundColor: colors.blue, marginRight: 10 }}
             />
             <View>
-              <Title>Muhamad Ridho</Title>
+              <Title>{name}</Title>
               <Caption>+62 88806446929</Caption>
             </View>
           </View>

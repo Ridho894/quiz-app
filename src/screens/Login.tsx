@@ -19,7 +19,6 @@ const Login = ({ navigation }: any) => {
   const handleLogin = async () => {
     const user = { name: username };
     await AsyncStorage.setItem("user", JSON.stringify(user));
-    console.log(user);
     return navigation.navigate("BarNavigation");
   };
   return (

@@ -34,6 +34,18 @@ const Item = ({ title }: any) => (
   </View>
 );
 export default function Home({ navigation }: any) {
+  const [user, setUser] = useState<any>({});
+  const findUser = async () => {
+    const result = await AsyncStorage.getItem("user");
+    if (result !== null) {
+      setUser(JSON.parse(result));
+    }
+  };
+  useEffect(() => {
+    findUser();
+    // AsyncStorage.clear();
+  }, []);
+  const name = user.name;
   const [refreshing, setrefreshing] = useState(false);
   const [data, setdata] = useState(DATA);
   const onRefresh = () => {
@@ -52,7 +64,7 @@ export default function Home({ navigation }: any) {
   const renderItem = ({ item }: any) => <Item title={item.title} />;
   return (
     <SafeAreaView style={styles.container}>
-      <Text style={{ fontSize: 20 }}>Hello</Text>
+      <Text style={{ fontSize: 20 }}>Hello {name}</Text>
       <FlatList
         data={data}
         renderItem={renderItem}

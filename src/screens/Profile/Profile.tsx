@@ -26,7 +26,10 @@ const Profile = ({ navigation }: any) => {
     // AsyncStorage.clear();
   }, []);
   const name = user.name;
-  const handleLogout = () => {};
+  const handleLogout = () => {
+    AsyncStorage.clear();
+    navigation.navigate("WelcomeScreen", { screen: "Login" });
+  };
   return (
     <ScrollView>
       <View>
@@ -41,7 +44,8 @@ const Profile = ({ navigation }: any) => {
           >
             <Avatar.Text
               size={50}
-              label={`${name.slice(0, 1)}`}
+              // label={`${name.slice(0, 1)}`}
+              label={name}
               style={{ backgroundColor: colors.blue, marginRight: 10 }}
             />
             <View>
@@ -151,7 +155,7 @@ const Profile = ({ navigation }: any) => {
               backgroundColor: colors.blue,
               marginTop: 50,
             }}
-            onPress={() => navigation.navigate("WelcomeScreen")}
+            onPress={handleLogout as any}
           />
         </View>
       </View>

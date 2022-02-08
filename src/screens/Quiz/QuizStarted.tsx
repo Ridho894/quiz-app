@@ -144,7 +144,9 @@ function QuizStarted({ route, navigation }: any) {
                     bottom: 0,
                   }}
                 >
-                  <ProgressBar progress={number + 1} color={colors.blue} />
+                  <ProgressBar 
+                  progress={(number + 1) / questions.length}
+                 color={colors.blue} />
                 </View>
               </>
             ) : (
